@@ -53,16 +53,6 @@ public class SynthVoice extends Chubgraph
     1 => float osc2Detune;
     0 => int oscOffset;
 
-    fun void processLfo()
-    {        
-        while(true)
-        {
-            filterCutoff + filterLfo.last() => lpf.freq;
-            5::ms => now;
-        }
-    }
-    spork ~ processLfo();
-
     fun void SetOsc1Freq(float frequency)
     {
         frequency => tri1.freq => sqr1.freq => saw1.freq;
@@ -184,14 +174,12 @@ public class SynthVoice extends Chubgraph
 
     fun void filterEnvelope()
     {           
-        filterCutoff => float startFreq;        
-        10::ms => now;     
+        filterCutoff => float startFreq;                
         while((adsr.state() != 0 && adsr.value() == 0) == false)
         {
-            (filterEnv * adsr.value()) + startFreq => lpf.freq;            
-            20::ms => now;
+            (filterEnv * adsr.value()) + startFreq + filterLfo.last() => lpf.freq;                        
+            10::ms => now;  
         }
-
     }
 
     fun void cutoff(float amount)
