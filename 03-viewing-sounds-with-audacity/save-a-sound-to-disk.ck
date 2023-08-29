@@ -2,7 +2,7 @@
 
 SinOsc osc => dac => WvOut waveOut => blackhole;
 
-"test.wav" =>waveOut.wavFilename;
+"test.wav" => waveOut.wavFilename;
 
 440 => osc.freq;
 0.5 => osc.gain;
