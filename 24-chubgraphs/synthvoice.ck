@@ -1,4 +1,4 @@
-public class SynthVoice extends Chubgraph
+public class SynthVoice extends Chugraph
 {
     SawOsc saw1 => LPF lpf => ADSR adsr => Dyno limiter => NRev rev => outlet;
     SawOsc saw2 => lpf;
@@ -174,12 +174,13 @@ public class SynthVoice extends Chubgraph
 
     fun void filterEnvelope()
     {           
-        filterCutoff => float startFreq;                
+        filterCutoff => float startFreq;
         while((adsr.state() != 0 && adsr.value() == 0) == false)
         {
-            (filterEnv * adsr.value()) + startFreq + filterLfo.last() => lpf.freq;                        
-            10::ms => now;  
+            (filterEnv * adsr.value()) + startFreq + filterLfo.last() => lpf.freq;            
+            10::ms => now;
         }
+
     }
 
     fun void cutoff(float amount)
@@ -317,33 +318,3 @@ public class SynthVoice extends Chubgraph
 
 SynthVoice voice;
 voice.help();
-
-// SynthVoice voice => Dyno dyno => dac;
-// [0,4,7,11,14,16,19,23,24] @=> int notes[];
-// //[0,0,12,10] @=> int notes[];
-// 10 => voice.cutoff;
-// 2 => voice.ChooseOsc1;
-// 2 => voice.ChooseOsc2;
-// 0 => voice.detune;
-// -12 => voice.oscOffset;
-// 1.5 => voice.pitchMod;
-// 50 => voice.cutoffMod;
-// 1 => voice.ChooseLfo;
-// 5 => voice.SetLfoFreq;
-// 15 => voice.noise;
-// 10 => voice.reverb;
-// 250::ms => voice.adsr.attackTime;
-// 250::ms => voice.adsr.decayTime;
-// while(true)
-// {
-//     Math.random2(1,3) => int nextOsc;
-//     2 => voice.ChooseOsc1;
-//     2 => voice.ChooseOsc2;
-//     Math.random2(1,10) => voice.SetLfoFreq;
-//     Math.random2(1,25) => voice.rez;
-//     Math.random2(1,50) => voice.env;
-//     notes[Math.random2(0, notes.cap()-1)] + 24 => voice.keyOn;
-//     1::second / 2 => now;
-//     1 => voice.keyOff;
-    
-// }
