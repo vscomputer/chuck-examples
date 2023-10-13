@@ -4,15 +4,15 @@ StringTokenizer tok;
 
 0.2 => osc.gain;
 1.2::second => dur bar;
-48 => int offset;
+36 => int offset;
 
-<<< io.open("tri-1.txt", FileIO.READ) >>>;
+<<< io.open("tri-2.txt", FileIO.READ) >>>;
 
 while(io.more())
 {           
     io.readLine() => string line;        
     
-    if (line.find("//") == 0 )
+    if (line.find("//") == 0 || line.length() == 0)
     {
         line => ProcessComment;
     }
