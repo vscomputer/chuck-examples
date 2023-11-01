@@ -1,12 +1,17 @@
-public class ChipTriOsc
+public class ChipPulseOsc
 {    
-    TriOsc osc => ADSR env => dac;
+    PulseOsc osc => ADSR env => dac;
     FileIO io;
     StringTokenizer tok;
 
-    0.4 => osc.gain;
+    0.2 => osc.gain;
     1.2::second => dur bar;
-    36 => int offset;
+    48 => int offset;
+
+    fun void SetPulseWidth(float width)
+    {
+        width => osc.width;
+    }
 
     fun void SetBarDuration(dur newDuration)
     {
