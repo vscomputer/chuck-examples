@@ -7,6 +7,7 @@ public class ChipTriOsc
     0.4 => osc.gain;
     1.2::second => dur bar;
     36 => int offset;
+    0.35 => osc.width;
 
     fun void SetBarDuration(dur newDuration)
     {
