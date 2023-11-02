@@ -1,10 +1,10 @@
-public class ChipTriOsc
+public class ChipNoiseOsc
 {   
-    TriOsc osc => ADSR env => dac; 
+    Noise osc => ADSR env => LPF lpf => dac; 
     FileIO io;
     StringTokenizer tok;
 
-    0.4 => osc.gain;
+    0.2 => osc.gain;
     1.2::second => dur bar;
     36 => int offset;
 
@@ -56,12 +56,32 @@ public class ChipTriOsc
         tok.next() => Std.atoi => int note;
         tok.next() => Std.atoi => int div;
         <<< note, div >>>;
-        note + offset => Std.mtof => osc.freq;    
+        
         bar / div => dur duration;
-        (1::ms, duration, 0, 1::ms) => env.set;
+        SetNoise(note, duration);
         1 => env.keyOn;
         ProcessExtras(tok);
         duration => now;
+        1 => env.keyOff;
+    }
+
+    fun void SetNoise(int note, dur duration)
+    {
+        if(note == 1)
+        {
+            (44100 / 16) * 1 => lpf.freq;
+            (1::ms, duration / 8, 0.0, 1::ms) => env.set;
+        }
+        if(note == 2)
+        {            
+            (44100 / 16) * 4 => lpf.freq;
+            (1::ms, duration / 8, 0.0, 1::ms) => env.set;
+        }
+        if(note == 3)
+        {
+            (44100 / 16) * 4 => lpf.freq;
+            (1::ms, duration, 0.0, 1::ms) => env.set;
+        }
     }
 
     fun void ProcessExtras(StringTokenizer tok)

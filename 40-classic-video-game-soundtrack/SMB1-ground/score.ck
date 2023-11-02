@@ -1,6 +1,7 @@
 ChipTriOsc triOsc;
 ChipPulseOsc pulseOsc1;
 ChipPulseOsc pulseOsc2;
+ChipNoiseOsc noiseOsc;
 
 1.2::second => dur bar;
 bar => triOsc.SetBarDuration;
@@ -13,16 +14,19 @@ bar => pulseOsc2.SetBarDuration;
 spork ~ triOsc.PlayFile("tri-1.txt"); 
 spork ~ pulseOsc1.PlayFile("p1-1.txt"); 
 spork ~ pulseOsc2.PlayFile("p2-1.txt"); 
+spork ~ noiseOsc.PlayFile("noise-1.txt"); 
 2::bar => now;
 
 spork ~ triOsc.PlayFile("tri-2.txt"); 
 spork ~ pulseOsc1.PlayFile("p1-2.txt");
 spork ~ pulseOsc2.PlayFile("p2-2.txt"); 
+spork ~ noiseOsc.PlayFile("noise-2.txt"); 
 4::bar => now;
 
 spork ~ triOsc.PlayFile("tri-2.txt"); 
 spork ~ pulseOsc1.PlayFile("p1-2.txt");
 spork ~ pulseOsc2.PlayFile("p2-2.txt"); 
+spork ~ noiseOsc.PlayFile("noise-2.txt"); 
 4::bar => now;
 
 0.25 => pulseOsc1.SetPulseWidth;
@@ -31,16 +35,19 @@ spork ~ pulseOsc2.PlayFile("p2-2.txt");
 spork ~ triOsc.PlayFile("tri-3.txt"); 
 spork ~ pulseOsc1.PlayFile("p1-3.txt");
 spork ~ pulseOsc2.PlayFile("p2-3.txt"); 
+spork ~ noiseOsc.PlayFile("noise-3.txt"); 
 8::bar => now;
 
 spork ~ triOsc.PlayFile("tri-3.txt"); 
 spork ~ pulseOsc1.PlayFile("p1-3.txt");
 spork ~ pulseOsc2.PlayFile("p2-3.txt"); 
+spork ~ noiseOsc.PlayFile("noise-3.txt"); 
 8::bar => now;
 
 spork ~ triOsc.PlayFile("tri-4.txt"); 
 spork ~ pulseOsc1.PlayFile("p1-4.txt");
 spork ~ pulseOsc2.PlayFile("p2-4.txt");
+spork ~ noiseOsc.PlayFile("noise-4.txt"); 
 6::bar => now;
 
 0.125 => pulseOsc1.SetPulseWidth;
@@ -49,16 +56,19 @@ spork ~ pulseOsc2.PlayFile("p2-4.txt");
 spork ~ triOsc.PlayFile("tri-1.txt"); 
 spork ~ pulseOsc1.PlayFile("p1-1.txt"); 
 spork ~ pulseOsc2.PlayFile("p2-1.txt"); 
+spork ~ noiseOsc.PlayFile("noise-1.txt"); 
 2::bar => now;
 
 spork ~ triOsc.PlayFile("tri-2.txt"); 
 spork ~ pulseOsc1.PlayFile("p1-2.txt");
 spork ~ pulseOsc2.PlayFile("p2-2.txt"); 
+spork ~ noiseOsc.PlayFile("noise-2.txt"); 
 4::bar => now;
 
 spork ~ triOsc.PlayFile("tri-2.txt"); 
 spork ~ pulseOsc1.PlayFile("p1-2.txt");
 spork ~ pulseOsc2.PlayFile("p2-2.txt"); 
+spork ~ noiseOsc.PlayFile("noise-2.txt"); 
 4::bar => now;
 
 0.25 => pulseOsc1.SetPulseWidth;
@@ -67,16 +77,19 @@ spork ~ pulseOsc2.PlayFile("p2-2.txt");
 spork ~ triOsc.PlayFile("tri-5.txt"); 
 spork ~ pulseOsc1.PlayFile("p1-5.txt");
 spork ~ pulseOsc2.PlayFile("p2-5.txt"); 
+spork ~ noiseOsc.PlayFile("noise-5.txt"); 
 8::bar => now;
 
 spork ~ triOsc.PlayFile("tri-5.txt"); 
 spork ~ pulseOsc1.PlayFile("p1-5.txt");
 spork ~ pulseOsc2.PlayFile("p2-5.txt"); 
+spork ~ noiseOsc.PlayFile("noise-5.txt"); 
 8::bar => now;
 
 spork ~ triOsc.PlayFile("tri-4.txt"); 
 spork ~ pulseOsc1.PlayFile("p1-4.txt");
 spork ~ pulseOsc2.PlayFile("p2-4.txt");
+spork ~ noiseOsc.PlayFile("noise-4.txt"); 
 6::bar => now;
 
 0.125 => pulseOsc1.SetPulseWidth;
@@ -85,6 +98,7 @@ spork ~ pulseOsc2.PlayFile("p2-4.txt");
 spork ~ triOsc.PlayFile("tri-1.txt"); 
 spork ~ pulseOsc1.PlayFile("p1-1.txt"); 
 spork ~ pulseOsc2.PlayFile("p2-1.txt"); 
+spork ~ noiseOsc.PlayFile("noise-1.txt"); 
 2::bar => now;
 
 0.25 => pulseOsc1.SetPulseWidth;
@@ -93,4 +107,5 @@ spork ~ pulseOsc2.PlayFile("p2-1.txt");
 spork ~ triOsc.PlayFile("tri-5.txt"); 
 spork ~ pulseOsc1.PlayFile("p1-5.txt");
 spork ~ pulseOsc2.PlayFile("p2-5.txt"); 
+spork ~ noiseOsc.PlayFile("noise-5.txt"); 
 8::bar => now;
