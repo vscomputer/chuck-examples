@@ -288,7 +288,7 @@ public class SynthVoice extends Chugraph
         0.2 * (amount / 100) => rev.mix; 
     }
 
-    fun void help()
+    fun void displayHelp()
     {
         <<< "Classic mono synth voice" >>>;
         <<< "Designed by Clint Hoagland, 03/22/2021" >>>;
@@ -317,4 +317,4 @@ public class SynthVoice extends Chugraph
 }
 
 SynthVoice voice;
-voice.help();
+voice.displayHelp();
